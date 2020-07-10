@@ -13,7 +13,10 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const posts = await loadPostCollection();
     await posts.insertOne({
-        text: req.body.text,
+        userID: req.body.userID,
+        title: req.body.title,
+        description: req.body.description,
+        dataSet: {},
         createdAt: new Date()
     });
     res.status(201).send();
@@ -27,13 +30,14 @@ router.delete('/:id', async (req, res) => {
 });
 
 
+
 async function loadPostCollection() {
     const client = await mongodb.MongoClient.connect
     ('mongodb+srv://ys:ys@s-app.ciw6r.mongodb.net/s-app?retryWrites=true&w=majority',{
         useNewUrlParser: true
     });
 
-    return client.db('vue_express').collection('posts');
+    return client.db('s-app').collection('posts');
 }
 
 
