@@ -18,7 +18,7 @@ function saveBeforeInstallPromptEvent (evt) {
     installButton.removeAttribute('hidden');
 }
 
-function installPWA {
+function installPWA() {
     // CODELAB: Add code show install prompt & hide the install button.
     deferredInstallPrompt.prompt();
     installButton.remove();
