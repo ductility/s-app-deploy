@@ -1,10 +1,4 @@
 let deferredInstallPrompt = null;
-let installButton = null;
-
-window.addEventListener('load', () => {
-    installButton = document.getElementById("install-button");
-    installButton.addEventListener('click', installPWA);
-});
 
 // CODELAB: Add event listener for beforeinstallprompt event
 window.addEventListener(
@@ -21,7 +15,6 @@ function saveBeforeInstallPromptEvent (evt) {
 function installPWA() {
     // CODELAB: Add code show install prompt & hide the install button.
     deferredInstallPrompt.prompt();
-    installButton.remove();
 
     // CODELAB: Log user response to prompt.
     deferredInstallPrompt.userChoice
